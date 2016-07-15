@@ -1,0 +1,7 @@
+<%= form_for @photo, url: create_vacation_photos_path do |f| %>
+<%= f.label :location %>
+<%= f.text_field :location %>
+<%= f.label :photo %>
+<%= f.attachment_field :photo %>
+<%= f.submit %>
+<% end %>
