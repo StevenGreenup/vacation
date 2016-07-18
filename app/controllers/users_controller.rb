@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
 
+  before_action except: [:new, :create] do
+    if session[:user_id].nil?
+      redirect_to sign_in_path, notice: "You must sign in!"
+    end
+  end
 
   def new
     @user = User.new
@@ -23,12 +28,9 @@ class UsersController < ApplicationController
     @vacation = Vacation.new
     @vacations = Vacation.where("user_id = ?", "#{@current_user.id}")
     @photos = Photo.where("user_id = ?", "#{@current_user.id}")
+
   end
 
-  def edit
-  end
 
-  def update
-  end
 
 end

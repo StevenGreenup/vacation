@@ -19,11 +19,13 @@
     id: 'greenup.0m0k3acb',
     accessToken: 'pk.eyJ1IjoiZ3JlZW51cCIsImEiOiJjaXFudW4wNjcwMWQ1Zm9ubjQ0eHB6ejU5In0.8U3wnPsvgv9fAV4VnC2apA'
 }).addTo(mymap);
+
 <% @photos.each do |photo| %>
 var circle = L.circle([<%= photo.latitude %>, <%= photo.longitude %>], 500, {
     color: 'red',
     fillColor: '#f03',
     fillOpacity: 0.5
 }).addTo(mymap).bindPopup(' <%= photo.location %>');
+
  <% end %>
 </script>

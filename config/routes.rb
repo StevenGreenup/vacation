@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  root 'home#index'
+  use_doorkeeper
+
+  root 'users#show'
 
   get 'registration' => 'users#new', as: :new_user
   post 'registration' => 'users#create', as: :create_user
@@ -12,10 +14,21 @@ Rails.application.routes.draw do
   get 'vacations/new' => 'vacations#new', as: :new_vacation
   get 'vacations/:id' => 'vacations#show', as: :vacation
   post 'vacations' => 'vacations#create', as: :create_vacation
+  delete 'vacations/:id' => 'vacations#delete', as: :delete_vacation
 
+  delete 'photos/:vacation_id' => 'photos#delete', as: :delete_photo
   get 'photos/vacation/:vacation_id/new' => 'photos#new', as: :new_vacation_photos
   get 'photos/vacation/:vacation_id' => 'photos#show', as: :vacation_photos
+  get 'photos/vacation/:vacation_id/edit' => 'photos#edit', as: :edit_vacation_photos
+  patch 'photos/vacation/:vacation_id' => 'photos#update', as: :update_vacation_photos
   post 'photos/vacation/:vacation_id/new' => 'photos#create', as: :create_vacation_photos
+
+
+  get 'api/vacations' => 'api/vacations#index', as: :api_vacations
+  get 'api/vacations/:id' => 'api/vacations#show', as: :api_vacation
+
+  post '/api/users' => 'api/users#create'
+
 
 
 

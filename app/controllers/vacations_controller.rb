@@ -19,10 +19,13 @@ class VacationsController < ApplicationController
     end
   end
 
-  def edit
+
+  def delete
+    @vacation = Vacation.find_by id: params[:id]
+    Vacation.find(params[:id]).delete
+    (redirect_to delete_photo_path(vacation_id: @vacation.id), method: :delete)
+
   end
 
-  def update
-  end
 
 end

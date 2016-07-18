@@ -6,8 +6,9 @@
    <div class="col-sm-4">
      <% @vacations.each do |vacation| %>
 
-     <%= link_to vacation.name, vacation_path(id: vacation.id) %><br>
-
+     <%= link_to vacation.name, vacation_path(id: vacation.id) %>
+     (<%= link_to "Edit", edit_vacation_photos_path(vacation_id: vacation.id, id: vacation.id) %>)
+     (<%= link_to "Delete", delete_vacation_path(id: vacation.id), method: :delete %>)<br>
      <% end %>
    </div>
    <div class="col-sm-8">
