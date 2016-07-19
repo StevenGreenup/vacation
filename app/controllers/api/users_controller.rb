@@ -1,9 +1,7 @@
 class Api::UsersController < ApplicationController
 
 
-  before_action except: [:create] do
-    :doorkeeper_authorize!
-  end
+  before_action except: [:create], :doorkeeper_authorize!
 
   protect_from_forgery with: :null_session
 
