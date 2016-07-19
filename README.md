@@ -1,3 +1,48 @@
+get 'api/vacations' =>
+shows vacations and photos for all users
+
+
+get 'api/vacations/:id'
+shows vacations for a particular vacation
+
+
+get 'api/users/:id'
+shows vacations for a particular user
+
+
+/oauth/token
+
+{
+  "grant_type"   : "password",
+  "username"     : "email",
+  "password"     : ""
+}
+
+/api/users
+{
+  "username"     : "email",
+  "password"     : "test"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 == README
 
 This README would normally document whatever steps are necessary to get the
