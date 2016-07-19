@@ -1,0 +1,15 @@
+language: ruby
+rvm:
+- 2.3.0
+addons:
+  postgresql: '9.4'
+before_script:
+- psql -c 'create database travis_ci_test;' -U postgres
+- cp config/database.yml.travis config/database.yml
+deploy:
+  provider: heroku
+  api_key:
+    secure: WeOl26ur693SCFHsGf7Z7cFTwEXNNFTzE33NfC6praR8Gl/cbl8eapr0Opf3ifnXNfJfQDi1w7EXLzfqzlNRcAh85qDyAkhqERC9pGMgrE3chBoTOmEs+YGZcsZbKY4cutxZk9qXuUoeLcxvwltPrlqDrP1DgZDIOLfbdSFw+XktiK5URje4XMKRsErl2MGjdda5yQnG3TWghkkWIcUJ76JXhU8+NabXN5Kk+uUnB1fzwjGkEqLgAe7CGAFt2LdLNWwOsDKVfJAneRoZzee5Nbku2yNLzQ+O9VFGtkXu5wgXmcSeT0LbSaeETCITqjqcaPVHM86g+zzjza44+e4L4/QtkzjO7/4Xck/KZHVeptK43D8ncZDTJYP2BXPV5OV5ZXQOyZPFm7Pl98co568mLBmt0RHMr1wdX5BYTSl1Bs+iakrJDDy3g4xHNsQKXfX8mT2nnkOCkIEx/mE/3mW2jqWQq1YFNLJvhdmLNEE3zw6hokT7qfhUMGMReHC/pZyyrDpmo1XM7VBtZcGOvyOuMz/cS8PjdOSNTtrTmG8jMaDLPSvMwfaA7LXn0FbOBCuKWIjjnG/Dh1QDjnh/DM6wDWPA9/K2/u1YspBzqghFQa1VX/zNAqWCI3IublHu1cunc7/zFYVq/kkz9n7Ve2mOY+bzwy5St55lsmhv2Jl0iPM=
+  app: salty-lowlands-85392
+  on:
+    repo: StevenGreenup/vacation
