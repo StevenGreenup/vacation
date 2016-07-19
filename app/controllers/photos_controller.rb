@@ -27,7 +27,7 @@ class PhotosController < ApplicationController
 
   def edit
     @vacation = Vacation.find_by id: params[:id]
-    @photo = Photo.find_by vacation_id: params[:vacation_id]
+    @photo = Photo.find_by id: params[:id]
   end
 
   def update
@@ -48,11 +48,6 @@ class PhotosController < ApplicationController
   end
   end
 
-  def delete
-    Photo.find_by vacation_id: (params[:vacation_id]).delete
-    redirect_to user_path(id: @current_user.id)
-
-  end
 
 
 

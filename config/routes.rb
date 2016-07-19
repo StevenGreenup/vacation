@@ -19,13 +19,16 @@ Rails.application.routes.draw do
   delete 'photos/:vacation_id' => 'photos#delete', as: :delete_photo
   get 'photos/vacation/:vacation_id/new' => 'photos#new', as: :new_vacation_photos
   get 'photos/vacation/:vacation_id' => 'photos#show', as: :vacation_photos
-  get 'photos/vacation/:vacation_id/edit' => 'photos#edit', as: :edit_vacation_photos
-  patch 'photos/vacation/:vacation_id' => 'photos#update', as: :update_vacation_photos
+  get 'photos/:id/edit' => 'photos#edit', as: :edit_vacation_photos
+  patch 'photos/:id' => 'photos#update', as: :update_vacation_photos
   post 'photos/vacation/:vacation_id/new' => 'photos#create', as: :create_vacation_photos
 
 
   get 'api/vacations' => 'api/vacations#index', as: :api_vacations
   get 'api/vacations/:id' => 'api/vacations#show', as: :api_vacation
+
+  get 'api/users/:id' => 'api/users#show', as: :api_user_vacation
+  get 'api/me/photos' => 'api/me#me', as: :api_me
 
   post '/api/users' => 'api/users#create'
 

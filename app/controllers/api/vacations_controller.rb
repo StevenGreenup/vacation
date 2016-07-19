@@ -7,7 +7,7 @@ class Api::VacationsController < ApplicationController
 
 
   def index
-    @vacations = Vacation.all
+    @users = User.all
   end
 
   def show

@@ -1,41 +1,39 @@
- <%= link_to 'New Vacation', new_vacation_path %><br>
 
 
- <div class="col-sm-12">
-
-   <div class="col-sm-4">
-     <% @vacations.each do |vacation| %>
-
-     <%= link_to vacation.name, vacation_path(id: vacation.id) %>
-     (<%= link_to "Edit", edit_vacation_photos_path(vacation_id: vacation.id, id: vacation.id) %>)
-     (<%= link_to "Delete", delete_vacation_path(id: vacation.id), method: :delete %>)<br>
-     <% end %>
-   </div>
-   <div class="col-sm-8">
-
-     <div id="map"></div>
-
-
-     <script type="text/javascript">
-
-       var mymap = L.map('map').setView([51.505, -0.09], 2);
-
-       L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZ3JlZW51cCIsImEiOiJjaXFudW4wNjcwMWQ1Zm9ubjQ0eHB6ejU5In0.8U3wnPsvgv9fAV4VnC2apA', {
-         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-         maxZoom: 18,
-         id: 'greenup.0m0k3acb',
-         accessToken: 'pk.eyJ1IjoiZ3JlZW51cCIsImEiOiJjaXFudW4wNjcwMWQ1Zm9ubjQ0eHB6ejU5In0.8U3wnPsvgv9fAV4VnC2apA'
-     }).addTo(mymap);
-
-     <% @photos.each do |photo| %>
-         L.marker([<%= photo.latitude %>, <%= photo.longitude %>]).addTo(mymap).bindPopup(' <%= photo.location %>');
-      <% end %>
-     </script>
+<div class="col-sm-12">
 
 
 
+    <div class="col-sm-4">
+      <div class="well">
+        <% @vacations.each do |vacation| %>
+        <%= link_to vacation.name, vacation_path(id: vacation.id) %>
+        (<%= link_to "Add Photo", new_vacation_photos_path(vacation_id: vacation.id) %>) (<%= link_to "Delete", delete_vacation_path(id: vacation.id), method: :delete %>)<br>
+        <% end %><br><br>
+        <%= link_to 'Add New Vacation', new_vacation_path, class: "btn btn-primary" %><br>
+    </div>
+    </div>
+    <div class="col-sm-8">
 
+        <div id="map"></div>
 
+        <script type="text/javascript">
 
-   </div>
-   </div>
+            var mymap = L.map('map').setView([
+                51.505, -0.09
+            ], 2);
+
+            L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZ3JlZW51cCIsImEiOiJjaXFudW4wNjcwMWQ1Zm9ubjQ0eHB6ejU5In0.8U3wnPsvgv9fAV4VnC2apA', {
+                attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+                maxZoom: 18,
+                id: 'greenup.0m0k3acb',
+                accessToken: 'pk.eyJ1IjoiZ3JlZW51cCIsImEiOiJjaXFudW4wNjcwMWQ1Zm9ubjQ0eHB6ejU5In0.8U3wnPsvgv9fAV4VnC2apA'
+            }).addTo(mymap);
+
+            <% @photos.each do |photo| %>
+            L.marker([<%= photo.latitude %>, <%= photo.longitude %>]).addTo(mymap).bindPopup(' <%= photo.location %>');
+            <% end %>
+        </script>
+
+    </div>
+</div>

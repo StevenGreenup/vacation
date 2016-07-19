@@ -7,7 +7,7 @@ class Api::UsersController < ApplicationController
 
 
   def show
-    @vacations = Vacation.find_by id: params[:id]
+    @user = User.find_by id: params[:id]
   end
 
   def create
